@@ -28,6 +28,10 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * Utility class to calculate the convex hull for a collection of points.</br>
+ * It used the algorithm by Andrew & Graham, implemented for different Point-types.
+ */
 public final class ConvexHull
 {
 	private static long cross(Point O, Point A, Point B)
@@ -40,6 +44,12 @@ public final class ConvexHull
 		return convex_hull_graham_andrew(P.toArray(new Point[P.size()]));
 	}
 
+	/**
+	 * Calculate the convex hull according to the algorithm by Graham & Andrew
+	 * @param P The array of input points.
+	 * @return The calculated convex hull.
+	 * @param <T> The type of point, derived from Point.
+	 */
 	public static <T extends Point> Point[] convex_hull_graham_andrew(T[] P)
 	{
 		Point[] H;
@@ -94,11 +104,23 @@ public final class ConvexHull
 		return (A.getX() - O.getX()) * (long) (B.getY() - O.getY()) - (A.getY() - O.getY()) * (long) (B.getX() - O.getX());
 	}
 
+	/**
+	 * Calculate the convex hull according to the algorithm by Graham & Andrew
+	 * @param P The collection of input points.
+	 * @return The calculated convex hull.
+	 * @param <T> The type of point, derived from Point2D in this case.
+	 */
 	public static <T extends Point2D> List<T> convex_hull_graham_andrew_2D(Collection<T> P)
 	{
 		return (List<T>) convex_hull_graham_andrew_2D(P.toArray(new Point2D[P.size()]));
 	}
 
+	/**
+	 * Calculate the convex hull according to the algorithm by Graham & Andrew
+	 * @param P The array of input points.
+	 * @return The calculated convex hull.
+	 * @param <T> The type of point, derived from Point2D in this case.
+	 */
 	public static <T extends Point2D> List<T> convex_hull_graham_andrew_2D(T[] P)
 	{
 		Point2D[] H;

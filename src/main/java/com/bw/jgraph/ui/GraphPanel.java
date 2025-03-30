@@ -133,8 +133,10 @@ public class GraphPanel extends JPanel
 
     public void setScale(float scale) {
         if ( nodeVisual_ != null ) {
+            System.out.println("Set Scale to "+scale);
             nodeVisual_.getVisualSettings().scale_ = scale;
             updateSize();
+            repaint();
         }
     }
 
@@ -161,6 +163,11 @@ public class GraphPanel extends JPanel
             {
                 final Graphics2D g2 = ctx.g2D_;
                 g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+                // VALUE_STROKE_NORMALIZED may render up to one pixel beside the correct place (due to device resolution).
+                // This gets a visual problem for small structures with high contrast
+                g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
+
                 g2.scale(scale, scale);
                 g2.translate(graphOrigin_.x, graphOrigin_.y);
 
@@ -423,7 +430,6 @@ public class GraphPanel extends JPanel
 
     protected void updateSize()
     {
-
         Node root = graph_.getRoot();
         if (root != null)
         {

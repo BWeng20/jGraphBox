@@ -1,4 +1,4 @@
-# Graph representation and Visualisation
+# Graph Representation and Visualisation
 
 The project can be build and released via gradle.
 

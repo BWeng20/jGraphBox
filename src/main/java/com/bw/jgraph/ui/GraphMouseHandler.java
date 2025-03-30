@@ -39,7 +39,7 @@ public class GraphMouseHandler extends MouseAdapter
 	public void mouseWheelMoved(MouseWheelEvent e) {
 		if ( e.isControlDown()) {
 			double amount = e.getPreciseWheelRotation();
-			gpanel.setScale(gpanel.getScale() + (float) (amount / 10));
+			gpanel.setScale(gpanel.getScale() - (float) (amount / 10));
 		} else {
 			Component c = gpanel.getParent();
 			c.dispatchEvent(SwingUtilities.convertMouseEvent(gpanel, e, c));
