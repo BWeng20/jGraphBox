@@ -1,0 +1,13 @@
+/jToolsCore/build/
+/jProfiling/build/
+/jProfilingAgent/build/
+/gradle/
+/.idea/
+/.gradle/
+/jProfilingUI/build/
+/jToolsExamples/build/
+/gradlew
+/gradlew.bat
+/build/
+/jSVG/build/
+/jSVG/src/test/svg/

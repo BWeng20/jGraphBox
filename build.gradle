@@ -1,0 +1,57 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id 'signing'
+}
+
+
+group = "io.github.bweng20"
+version="0.0.1"
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+plugins.withType(JavaPlugin).configureEach {
+    java {
+        modularity.inferModulePath = true
+        sourceCompatibility= JavaVersion.VERSION_17
+        targetCompatibility= JavaVersion.VERSION_17
+    }
+}
+
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+}
+
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
+
+println "Configure $project.name, Gradle version $project.gradle.gradleVersion"
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    archiveClassifier = 'sources'
+    from sourceSets.main.allSource
+    duplicatesStrategy = 'exclude'
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    archiveClassifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+processResources {
+    duplicatesStrategy = 'exclude'
+}
+
+dependencies {
+    implementation 'io.github.bweng20:jSVG:1.5'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testImplementation 'com.formdev:flatlaf:3.5.4'
+    testImplementation 'com.formdev:flatlaf-fonts-roboto:2.137'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+}
+
