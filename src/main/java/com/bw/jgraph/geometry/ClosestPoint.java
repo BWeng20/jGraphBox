@@ -31,7 +31,7 @@ public class ClosestPoint
 {
   
     /**
-     * Get closest point on the border of a shape.
+     * Get the closest point on the border of a shape.
      */
     public static Point2D.Double onShape(Point2D.Double rp, Shape shape, double flatness)
     {
@@ -52,8 +52,8 @@ public class ClosestPoint
                 switch (type)
                 {
                     case PathIterator.SEG_MOVETO:                       
-                        p0.x = p1.x = seg[0];
-                        p0.y = p1.y = seg[1];
+                        p0.x = p2.x = seg[0];
+                        p0.y = p2.y = seg[1];
                         continue;
                     case PathIterator.SEG_LINETO:
                         p1.x = p2.x;
@@ -76,9 +76,10 @@ public class ClosestPoint
                 {
                     bestd = d;
                     bestp.x = r.x;
-                    bestp.y = r.y;                    
+                    bestp.y = r.y;
                 }
         }
+
         return bestp;
     }
 
@@ -92,9 +93,9 @@ public class ClosestPoint
         int C = lp2.x - lp1.x;
         int D = lp2.y - lp1.y;
 
-        long dot = A * C + B * D;
-        long len_sq = C * C + D * D;
-        double param = (len_sq == 0) ? -1: (dot / len_sq);
+        long dot = (long) A * C + (long) B * D;
+        long len_sq = (long) C * C + (long) D * D;
+        double param = (len_sq == 0) ? -1: ((double) dot / len_sq);
 
         Point result;
         if (param < 0)
@@ -145,6 +146,7 @@ public class ClosestPoint
             result.x = lp1.x + param * C;
             result.y = lp1.y + param * D;
         }
+
     }
     
     
