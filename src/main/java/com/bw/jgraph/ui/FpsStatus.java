@@ -1,12 +1,12 @@
 package com.bw.jgraph.ui;
 
-import com.bw.jtools.shape.AbstractPainterBase;
-
 import javax.swing.*;
 import java.awt.event.HierarchyEvent;
-import java.awt.event.HierarchyListener;
-import java.awt.event.WindowEvent;
 
+/**
+ * Label to show the Fframe Per Second, measured by using delta of graph-panels {@link GraphPanel#paintCount_}.
+ * The counter is set back on each measurement, so their can be only ONE such label for a graph-panel.
+ */
 public class FpsStatus extends JLabel {
 
     GraphPanel graphPanel;
