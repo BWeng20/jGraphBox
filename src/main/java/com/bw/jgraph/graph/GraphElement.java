@@ -32,7 +32,7 @@ public abstract class GraphElement
 
 	private static final AtomicInteger idGenerator = new AtomicInteger(0);
 
-	private HashMap<Attribute, Object> attributes_ = new HashMap();
+	private final HashMap<Attribute, Object> attributes_ = new HashMap<>();
 
 	public Iterator<Attribute> attributes()
 	{

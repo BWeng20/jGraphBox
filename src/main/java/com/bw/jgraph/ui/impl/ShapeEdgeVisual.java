@@ -29,7 +29,7 @@ public class ShapeEdgeVisual extends EdgeVisualBase
 		if (settings_.edge_.decorate)
 		{
 			Point2D.Float p = getEndPoint(edge);
-			p.x -= 0.25 * shape.getWidth();
+			p.x -= (float) (0.25 * shape.getWidth());
 			shape.drawAtPoint(ctx, p);
 		}
 	}

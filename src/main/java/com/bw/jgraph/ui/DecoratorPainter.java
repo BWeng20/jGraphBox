@@ -1,6 +1,5 @@
 package com.bw.jgraph.ui;
 
-import com.bw.jtools.shape.ShapePainter;
 import com.bw.jtools.svg.ShapeHelper;
 
 import java.awt.*;
@@ -49,12 +48,11 @@ public abstract class DecoratorPainter {
             if (ctx.debug_)
             {
                 // Debugging: Shows the path
-                gl.g2D_.setPaint(ctx.debugPaint_);
-                gl.g2D_.setStroke(ctx.debugStroke_);
+                gl.g2D_.setPaint(GraphicContext.debugPaint_);
+                gl.g2D_.setStroke(GraphicContext.debugStroke_);
                 gl.g2D_.draw(outline.getShape());
             }
 
-            final double d = end;
             double pos = start;
             if (pos < 0)
             {
@@ -63,10 +61,12 @@ public abstract class DecoratorPainter {
             final double D = getDistance();
             
             ShapeHelper.PointOnPath pop1 = outline.pointAtLength(pos);
+            if ( pop1 == null)
+                return;
             if ( gl.currentColor_ != null)
                 gl.g2D_.setPaint(gl.currentColor_);
 
-            while (pos < d)
+            while (pos < end)
             {
                 pos += D;
                 ShapeHelper.PointOnPath pop2 = outline.pointAtLength(pos);

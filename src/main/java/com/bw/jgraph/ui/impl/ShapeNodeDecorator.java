@@ -42,11 +42,11 @@ public class ShapeNodeDecorator implements NodeDecorator
 	{
 		Rectangle2D.Float r = new Rectangle2D.Float();
 		r.setRect(geo.getBounds(node));
-		double w = shape.getDistance() / 2;
-		r.x -= w;
-		r.y -= w;
-		r.width += 2 * w;
-		r.height += 2 * w;
+		double w = (double) shape.getDistance() / 2;
+		r.x -= (float) w;
+		r.y -= (float) w;
+		r.width += (float) (2 * w);
+		r.height += (float) (2 * w);
 		return r;
 	}
 
