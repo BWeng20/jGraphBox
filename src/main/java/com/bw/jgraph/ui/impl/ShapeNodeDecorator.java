@@ -1,7 +1,7 @@
 package com.bw.jgraph.ui.impl;
 
 import com.bw.jgraph.graph.Node;
-import com.bw.jgraph.ui.DecoratorShape;
+import com.bw.jgraph.ui.DecoratorPainter;
 import com.bw.jgraph.ui.Geometry;
 import com.bw.jgraph.ui.GraphicContext;
 import com.bw.jgraph.ui.NodeDecorator;
@@ -11,14 +11,14 @@ import java.awt.geom.Rectangle2D;
 
 public class ShapeNodeDecorator implements NodeDecorator
 {
-	public ShapeNodeDecorator(Geometry geometry, DecoratorShape shape)
+	public ShapeNodeDecorator(Geometry geometry, DecoratorPainter shape)
 	{
 		geo = geometry;
 		this.shape = shape;
 	}
 
 	protected Geometry geo;
-	protected DecoratorShape shape;
+	protected DecoratorPainter shape;
 
 	@Override
 	public void install(Node node)

@@ -1,7 +1,7 @@
 package com.bw.jgraph.ui.impl;
 
 import com.bw.jgraph.graph.Edge;
-import com.bw.jgraph.ui.DecoratorShape;
+import com.bw.jgraph.ui.DecoratorPainter;
 import com.bw.jgraph.ui.GraphicContext;
 import com.bw.jgraph.ui.Layout;
 import com.bw.jgraph.ui.VisualSettings;
@@ -11,12 +11,12 @@ import java.awt.Shape;
 import java.awt.geom.Point2D;
 
 /**
- * Edge painted with shapes, along the edge provided by base class.
+ * Edge painted with a static decorator-shape, along the edge provided by base class.
  */
 public class ShapeEdgeVisual extends EdgeVisualBase
 {
 
-	DecoratorShape shape ;
+	DecoratorPainter shape ;
 
 	public ShapeEdgeVisual(Layout layout, VisualSettings settings)
 	{
@@ -30,7 +30,7 @@ public class ShapeEdgeVisual extends EdgeVisualBase
 		{
 			Point2D.Float p = getEndPoint(edge);
 			p.x -= 0.25 * shape.getWidth();
-			shape.drawAtPoint(ctx, p, shape.getNumberOfVariants() - 1);
+			shape.drawAtPoint(ctx, p);
 		}
 	}
 
@@ -65,7 +65,7 @@ public class ShapeEdgeVisual extends EdgeVisualBase
 			if (curve != null)
 			{
 				shape.paintAlong(ctx, new ShapeHelper(curve),
-						0, -shape.getWidth() * 0.5, 0, -2);
+						0, -shape.getWidth() * 0.5);
 			}
 		}
 		else

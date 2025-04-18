@@ -85,9 +85,8 @@ public abstract class GraphElement
 	{
 		if ( this == obj )
 			return true;
-		else if ( obj instanceof GraphElement)
+		else if ( obj instanceof GraphElement ge)
 		{
-			GraphElement ge = (GraphElement)obj;
 			if ( ge.attributes_.size() == attributes_.size() )
 			{
 				for (Map.Entry<Attribute, Object> i : attributes_.entrySet() )
