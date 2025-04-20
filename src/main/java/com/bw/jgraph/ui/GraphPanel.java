@@ -376,7 +376,13 @@ public class GraphPanel extends JPanel
     public void moveElementAlongShape(GraphElement e, Shape border, Point2D.Double p)
     {
         // @TODO
-        Point2D.Double r = ClosestPoint.onShape(p, border, 0.2);
+        Point2D.Double pt = new Point2D.Double();
+
+        final float scale = nodeVisual_.getVisualSettings().scale_;
+        pt.x = (p.x / scale) - graphOrigin_.x;
+        pt.y = (p.y / scale) - graphOrigin_.y;
+
+        Point2D.Double r = ClosestPoint.onShape(pt, border, 0.2);
         Rectangle2D bounds = border.getBounds2D();
         geo_.moveElement(graph_, e, r.x - bounds.getMinX(), r.y - bounds.getMinY());
         repaint();
